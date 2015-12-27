@@ -1,0 +1,39 @@
+<html>
+<body>
+
+<h1>The Grocery Matrix</h1>
+
+<table>
+  <tr>
+    <th></th>
+    {% for person in people %}
+      <th>{{ person }}</th>
+    {% endfor %}
+    <th>Total</th>
+  </tr>
+
+  {% for category in categories %}
+    {% for item in category.items %}
+    <tr>
+      <td>{{ item.detail }}</td>
+      {% for person_total_for_item in item.people_totals %}
+        <td>{{ person_total_for_item }}</td>
+      {% endfor %}
+      <td>{{ item.total }}</td>
+    </tr>
+    {% endfor %}
+
+
+    <tr>
+      <td>{{ category.detail }}</td>
+      {% for person_total_for_category in category.people_totals %}
+        <td>{{ person_total_for_category }}</td>
+      {% endfor %}
+      <td>{{ category.total }}</td>
+    </tr>
+
+  {% endfor %}
+</table>
+
+</body>
+</html>
